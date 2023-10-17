@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="utf-8"/>
+        <title>Pagina Principal</title>
+         <link href="https://fonts.googleapis.com/css?family=Karla:400,700&display=swap" rel="stylesheet">
+            <link rel="stylesheet" href="https://cdn.materialdesignicons.com/4.8.95/css/materialdesignicons.min.css">
+                <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+                    </head>
+                    <body>
+                        <div align="center">
+                            <h1>Welcome!</h1>
+                            <h2>SuperHero Registration</h2>
+                            <a href="nuevo">Click for new hero</a>
+                            <br/><br/>
+                            <table border="1" cellpadding="10">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Hero Name</th>
+                                        <th>Real Name</th>
+                                        <th>Additional Info</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr th:each="person : ${listPerson}">
+                                        <td th:text="${person.id}">ID</td>
+                                        <td th:text="${person.heroName}">Hero Name</td>
+                                        <td th:text="${person.realName}">Real Name</td>
+                                        <td th:text="${person.additional}">Additional Info</td>
+                                        <td>
+                                            <a th:href="@{'/edit/' + ${person.id}}">Edit</a>
+                                            &nbsp;&nbsp;&nbsp;
+                                            <a th:href="@{'/delete/' + ${person.id}}">Delete</a>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>    
+                    </body>
+                    </html>
